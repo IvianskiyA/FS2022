@@ -12,8 +12,7 @@ return (
 )
 }
 
-const Content = (p) => {
-let parts = p.parts
+const Content = ({parts}) => {
 return (
   <>
     <Part part={parts[0].name} excercises={parts[0].excercises} />
@@ -27,7 +26,7 @@ return (
 const Total = (p) => {
 let numOfExc = 0
 p.parts.forEach(element => {
-  numOfExc = numOfExc + element.excercises
+  numOfExc += element.excercises
 });
 // console.log(numOfExc)
 return(
