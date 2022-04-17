@@ -12,6 +12,14 @@ const App = () => {
     </button>
   )
 
+  const DisplayNaN = ({prefix, expression, suffix}) => {
+    if (expression !== expression) {
+      return <p>{prefix} - </p>
+    }
+    else {return <p>{prefix} - {expression}{suffix} </p>}
+
+  }
+
   return (
     <div>
       <h1>give feedback</h1>
@@ -22,6 +30,9 @@ const App = () => {
       <p>good - {good} </p>
       <p>neutral - {neutral} </p>
       <p>bad - {bad} </p>
+      <DisplayNaN prefix = 'all' expression = {good + neutral + bad} />
+      <DisplayNaN prefix = 'avarage' expression={(good * 1 + bad * -1) / (good + neutral + bad) } />
+      <DisplayNaN prefix = 'positive' expression={good / (good + neutral + bad) * 100} suffix = '%' />
     </div>
   )
 }
