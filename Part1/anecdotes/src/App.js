@@ -22,17 +22,32 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [points, setPoint] = useState(Array(anecdotes.length).fill(0)) // Array(anecdotes.length).fill(0)
 
   const nextAnec = () => {
     const nextindex = getRandomInt(anecdotes.length)
-    console.log(nextindex)
+    //console.log(nextindex)    
     return nextindex
+  }
+
+  const addVote = (index) => {
+    const copyvote = [...points]
+    copyvote[index] += 1
+    setPoint(copyvote)
+    console.log(points)
+  }
+
+  const maxVote = () => {
+    return Math.max.apply(null, points)
   }
 
   return (
     <div>
       <p>{anecdotes[selected]}</p>
+      <p>has {points[selected]} votes</p>
+      <Button handleClick={() => addVote(selected)} text="vote" />
       <Button handleClick={() => setSelected(nextAnec())} text="next anecdote" />
+      <p>{maxVote()}</p>
     </div>
   )
 }
