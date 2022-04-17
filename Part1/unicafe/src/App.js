@@ -2,25 +2,40 @@ import { useState } from 'react'
 
   const StatisticLine = ({text, value}) => {
     return (
-      <p>{text} - {value} </p>
+      <tr>
+        <td> {text} </td>
+        <td> {value} </td>
+      </tr>
     )
   }
 
   const Statistics = (props) => {
     const {good, neutral, bad} = props
+    const stats =  [
+      {text: 'good', value: good},
+      {text: 'neutral', value: neutral},
+      {text: 'bad', value: bad},
+      {text: 'all', value: good + neutral + bad},
+      {text: 'avarage', value: (good * 1 + bad * -1) / (good + neutral + bad)},
+      {text: 'positive', value: good / (good + neutral + bad) * 100 + '%'}
+    ] 
+    // console.log(stats)
     if ((good + neutral + bad) > 0) {
+      const tableStat = stats.map((element, index) => 
+            <StatisticLine key={index} text={element.text} value={element.value} />            
+          )
+          console.log(tableStat)
       return (
         <>
           <h2>statistics</h2>
-          <StatisticLine text = 'good' value = {good} />
-          <StatisticLine text = 'neutral' value = {neutral} />
-          <StatisticLine text = 'bad' value =  {bad} />
-          <StatisticLine text = 'all' value =  {good + neutral + bad} /> 
-          <StatisticLine text = 'avarage' value = {(good * 1 + bad * -1) / (good + neutral + bad) } />
-          <StatisticLine text = 'positive' value = {good / (good + neutral + bad) * 100 + '%'}/>
+          <table>
+            <tbody>
+              {tableStat}
+            </tbody>
+          </table>
         </>
-      )
-      }
+      )      
+      }  
     else {
       return (
         <>
@@ -28,8 +43,7 @@ import { useState } from 'react'
           <p>No feedback given</p>
         </>
       )
-    }
-    
+    }    
     }
 
   const Button = (props) => (
