@@ -10,15 +10,19 @@ const Content = ({parts}) => (
       </>
       ) 
 
-
 const Total = ({parts}) => {
-  let numOfExc = 0
-  parts.forEach(element => {
-    numOfExc += element.exercises
-  });
-  // console.log(numOfExc)
+  const sumOfExc = { 
+        name: 'Total of exercises',
+        exercises: 0
+      }
+      
+  const {exercises} = parts.reduce((s, p) => {
+            sumOfExc.exercises = s.exercises + p.exercises
+            return sumOfExc
+          })
+          
   return(
-    <b>Total {numOfExc} of exercises </b>
+    <b>Total {exercises} of exercises </b>
     )
   }
 
