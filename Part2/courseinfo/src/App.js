@@ -11,14 +11,9 @@ const Content = ({parts}) => (
       ) 
 
 const Total = ({parts}) => {
-  const sumOfExc = { 
-        name: 'Total of exercises',
-        exercises: 0
-      }
-      
   const {exercises} = parts.reduce((s, p) => {
-            sumOfExc.exercises = s.exercises + p.exercises
-            return sumOfExc
+            p.exercises = s.exercises + p.exercises
+            return p
           })
           
   return(
