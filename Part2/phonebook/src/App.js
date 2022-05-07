@@ -3,11 +3,17 @@ import { useState } from 'react'
 const App = () => {
   const [persons, setPersons] = useState([]) 
   const [newName, setNewName] = useState('')
+  const [newPhoneNumber, setNewPhone] = useState('')
 
   const handleNameChange = ({target}) => {
       setNewName(target.value)
-      console.log(target.value)
+      //console.log(target.value)
   }
+
+  const handlePhoneChange = ({target}) => {
+    setNewPhone(target.value)
+    //console.log(target.value)
+}
 
   const addNewName = (event) => {
     event.preventDefault();
@@ -18,6 +24,7 @@ const App = () => {
     
     const newPerson = {
       name: newName,
+      phoneNumber: newPhoneNumber,
       recordDate: new Date().toLocaleDateString(),
       id: persons.length + 1
     }
@@ -37,13 +44,19 @@ const App = () => {
                 />
         </div>
         <div>
+          number: <input 
+                  value = {newPhoneNumber}
+                  onChange = {handlePhoneChange} 
+                />
+        </div>
+        <div>
           <button type="submit">add</button>
         </div>
       </form>
       <h2>Numbers</h2>
       <div>
         <ul>
-          {persons.map(p => <li key={p.id}> {p.name} </li>)}
+          {persons.map(p => <li key={p.id}> {p.name} - {p.phoneNumber} </li>)}
         </ul>
       </div>
     </div>
