@@ -23,10 +23,7 @@ const App = () => {
     }
 
     setPersons(persons.concat(newPerson))
-    setNewName('')
-    console.log(persons)
-    console.log(newName)
-    console.log(persons.findIndex((p) => p.name === newName))
+    setNewName('')    
   }
 
   return (
