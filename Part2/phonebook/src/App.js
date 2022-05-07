@@ -11,6 +11,11 @@ const App = () => {
 
   const addNewName = (event) => {
     event.preventDefault();
+    if (persons.findIndex((p) => p.name == newName) >= 0) {
+      alert(`${newName} is already added to phonebook`)
+      return
+    }
+    
     const newPerson = {
       name: newName,
       recordDate: new Date().toLocaleDateString(),
@@ -20,6 +25,8 @@ const App = () => {
     setPersons(persons.concat(newPerson))
     setNewName('')
     console.log(persons)
+    console.log(newName)
+    console.log(persons.findIndex((p) => p.name === newName))
   }
 
   return (
