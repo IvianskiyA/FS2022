@@ -4,7 +4,7 @@ const Persons = (f) => {
     return (
         <div>
             <ul>
-            {f.persons.map(p => f.filterString.length == 0 || p.name.toUpperCase().includes(f.filterString.toUpperCase())
+            {f.persons.map(p => f.filterString.length === 0 || p.name.toUpperCase().includes(f.filterString.toUpperCase())
                                     ? <li key={p.id}> {p.name} - {p.number} </li>
                                     : ''
                                 )}

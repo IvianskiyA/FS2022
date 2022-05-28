@@ -28,7 +28,7 @@ const App = () => {
  
   const addNewName = (event) => {
     event.preventDefault();
-    if (persons.findIndex((p) => p.name == newName) >= 0) {
+    if (persons.findIndex((p) => p.name === newName) >= 0) {
       alert(`${newName} is already added to phonebook`)
       return
     }
@@ -48,7 +48,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Filter filterString = {filterString} setNewFilterString ={setNewFilterString} />
+      <Filter filterString = {filterString} setNewFilterString = {setNewFilterString} />
       <h3>Add a new</h3>
       <PersonForm addNewName = {addNewName} newName = {newName} handleNameChange = {handleNameChange} 
                  newPhoneNumber = {newPhoneNumber} handlePhoneChange = {handlePhoneChange} />
