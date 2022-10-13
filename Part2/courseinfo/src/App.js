@@ -9,7 +9,7 @@ const App = () => {
         {
           name: 'Fundamentals of React',
           exercises: 10,
-          id: 1
+          id: 1 
         },
         {
           name: 'Using props to pass data',
